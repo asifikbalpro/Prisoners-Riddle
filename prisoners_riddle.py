@@ -12,7 +12,8 @@ from random import *
 
 box = []
 box_num_temp = []
-
+temp = []
+ava = []
 
 # make 100 box with random 100 number but not repeated
 def genarateBox(num_of_presoner):
@@ -28,34 +29,45 @@ def genarateBox(num_of_presoner):
             box.append(n)
             # print("n is not contained")
 
-    # for i in range(len(box)):
-    #     print(box[i])
 
 # enter one presoner at a time and see if he can find his number with 50 chance.
-temp1 = []
+
 def findyournumber(chance):
     for i in range(len(box)):
         # enter presoner
         num = openbox(i)
         for j in range(chance):
             num = openbox(num)
-            if num is i:
-                temp1.append(i)
-                print("found", num, i)
+            if num == i:
+                temp.append(i)
+                # print("found", num, i)
                 break
-            else:
-                continue
+
             
 
-    print( "Number of people found there number",len(temp1))
+    print( "Number of people found there number", len(temp))
+
+    if len(temp) >= len(box):
+        ava.append(1)
+
+    
 
 def openbox(index):
     return box[index]
 
 def main():
     print("Hello World!")
-    genarateBox(100)
-    findyournumber(50)
+   
+
+    for i in range(100):
+        genarateBox(1000)
+        findyournumber(500)
+        box.clear()
+        box_num_temp.clear()
+        temp.clear()
+
+
+    print("total times 100 people success", len(ava))
 
 
 if __name__ == "__main__":
